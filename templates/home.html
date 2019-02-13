@@ -3,3 +3,9 @@
 <a href="./patient"><h3>Patient Registration/Profile</h3></a>
 
 <a href="./lab-manager"><h3>Lab Manager</h3></a>
+
+<br>
+
+{% if result %}
+<td id="count" colspan="3">{{result|count}} Patients Currently Registered</td>
+{%endif%}

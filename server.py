@@ -28,7 +28,8 @@ def hello_world():
 
 @app.route('/')
 def return_template():
-    return render_template('home.html')
+    
+    return render_template('home.html',result=Patient.query.all())
 
 @app.route('/patient', methods=['GET'])
 def register_form():
