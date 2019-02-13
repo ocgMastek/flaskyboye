@@ -1,10 +1,9 @@
-import flask
-import sqlalchemy
+from flask.app import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-
-app = flask(__name__)
+app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+mysqlconnector://root:root@localhost:3306/python_projet'
-db  = sqlalchemy(app)
+db  = SQLAlchemy(app)
 
 class Patient(db.Model):
     __tablename__="patients"
@@ -14,17 +13,30 @@ class Patient(db.Model):
     area=db.Column('area',db.String(45))
     
     def __init__(self,params):
+        self.patient_id=int(params["patient_id"])
         self.name=params["name"]
-        self.age=params["age"]
-        self.age=params["area"]
+        self.age=int(params["age"])
+        self.area=params["area"]
         pass
     
     def __str__(self):
-        return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"
+        return "Patient_id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+str(self.area)
 
 
-if __name__ == '__main__':
-    db.create_all() #create the schema using the alchemy content
+@app.route("/patient-example")    
+def example_Patient():
+    p=Patient({"patient_id":1,"name":"New Patient","age":50,"area":"Leeds"})
+   
+    db.session.add(p)
+    db.session.commit()
+    patients=Patient.query.all()
+    for p in patients:
+        print("Patient_id: ",p.patient_id," Name:",p.name," Age:",p.age," Area:",p.area)
+        
+    return str(patients)
+
+# if __name__ == '__main__':
+#     db.create_all() #create the schema using the alchemy content
     # #example_Patient()
     # app.run(port=7700)
     # pass
