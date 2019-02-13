@@ -1,0 +1,6 @@
+CREATE TABLE `python_projet`.`patients` (
+  `patient_id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `age` INT NULL,
+  `area` VARCHAR(45) NULL,
+  PRIMARY KEY (`patient_id`));
