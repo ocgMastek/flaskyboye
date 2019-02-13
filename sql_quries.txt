@@ -4,3 +4,10 @@ CREATE TABLE `python_projet`.`patients` (
   `age` INT NULL,
   `area` VARCHAR(45) NULL,
   PRIMARY KEY (`patient_id`));
+  
+  
+CREATE TABLE `python_projet`.`reports` (
+  `report_id` INT NOT NULL,
+  `description` VARCHAR(200) NULL,
+  `date` VARCHAR(10) NULL,
+  PRIMARY KEY (`report_id`));
