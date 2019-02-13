@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Lab Manager</title>
+</head>
+<body>
+	<h1>Lab Manager</h1>
+	{% if result %}
+	<h3>{{result.message}}</h3>
+	<table border="1">
+		<tr>
+			<th>Patient ID</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Area</th>
+		</tr>
+		{% for pat in result %}
+			<tr>
+				<td>{{pat.patid}}</td>
+				<td>{{pat.name}}</td>
+				<td>{{pat.age}}</td>
+				<td>{{pat.area}}</td>
+			</tr>
+		{%endfor%}
+		<tr>
+			<td id="count" colspan="3">{{result|count}} : Patients Fetched</td>
+		</tr>
+	</table>
+	{%endif%}
+</body>
+</html>
