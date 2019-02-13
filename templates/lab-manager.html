@@ -6,8 +6,8 @@
 </head>
 <body>
 	<h1>Lab Manager</h1>
-	{% if result %}
-	<h3>{{result.message}}</h3>
+	{% if patients %}
+	<h3>{{patients.message}}</h3>
 	<table border="1">
 		<tr>
 			<th>Patient ID</th>
@@ -15,7 +15,7 @@
 			<th>Age</th>
 			<th>Area</th>
 		</tr>
-		{% for pat in result %}
+		{% for pat in patients %}
 			<tr>
 				<td>{{pat.patid}}</td>
 				<td>{{pat.name}}</td>
