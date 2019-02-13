@@ -19,5 +19,23 @@
 	</table>
 	</form>
 	
+		{% if report %}
+	<h3>{{report.message}}</h3>
+	<table border="1">
+		<tr>
+			<th>Report ID</th>
+			<th>Description</th>
+			<th>Date</th>
+		</tr>
+		{% for rep in report %}
+			<tr>
+				<td>{{rep.reportid}}</td>
+				<td>{{rep.description}}</td>
+				<td>{{rep.date}}</td>
+			</tr>
+		{%endfor%}
+	</table>
+	{%endif%}
+	
 </body>
 </html>
