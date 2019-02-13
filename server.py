@@ -1,4 +1,3 @@
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, request, jsonify, render_template
 
 
@@ -11,7 +10,7 @@ def hello_world():
 @app.route('/template')
 def return_template():
     return render_template('home.html')
-    
+
 @app.route('/register', methods=['POST'])
 def register_patient():
     if request.method == "POST":
