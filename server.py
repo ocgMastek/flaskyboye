@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-import jsonpickle
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+mysqlconnector://root:root@localhost:3306/python_projet'
@@ -39,6 +38,7 @@ def register_form():
 @app.route('/patient/list', methods=['GET'])
 def list_patients():
     if request.method == 'GET':
+        pass
         
 
 @app.route('/patient/register', methods=['POST'])
