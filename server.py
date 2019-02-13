@@ -4,7 +4,6 @@ import jsonpickle
 
 app = Flask(__name__)
 
-@app.route('/')
 def hello_world():
     return 'Flask server is running'
 
@@ -20,16 +19,14 @@ def register_form():
 @app.route('/patient/register', methods=['POST'])
 def register_patient():
     if request.method == 'POST':
-        fullrequest = request.form
+        # fullrequest = request.form
         patient = ({"patient_id":int(request.form.get("patient_id")),
                     "name":request.form.get("name"),
                     "age":int(request.form.get("age")),
                     "area":request.form.get("area")
                     })
+                    
         return jsonpickle.encode(patient)
-        # patientid = ({"patient_id":int(request.form.get("patient_id"))})
-
-        # patientname = ({"name":str(request.form.get("name"))})
         
 
     # if request.method == 'GET':
