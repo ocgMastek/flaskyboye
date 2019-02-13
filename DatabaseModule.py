@@ -23,9 +23,8 @@ class Patient(db.Model):
         return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"
 
 
-
 if __name__ == '__main__':
     db.create_all() #create the schema using the alchemy content
-    #example_Patient()
-    app.run(port=7700)
-    pass
+    # #example_Patient()
+    # app.run(port=7700)
+    # pass

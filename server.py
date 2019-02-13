@@ -24,7 +24,6 @@ class Patient(db.Model):
         # return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
         return "Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
 
-
 def hello_world():
     return 'Flask server is running'
 
@@ -37,6 +36,11 @@ def register_form():
     if request.method == 'GET':
         return render_template('patients.html')
 
+@app.route('/patient/list', methods=['GET'])
+def list_patients():
+    if request.method == 'GET':
+        
+
 @app.route('/patient/register', methods=['POST'])
 def register_patient():
     if request.method == 'POST':
@@ -47,7 +51,7 @@ def register_patient():
                                  })
         db.session.add(new_patient)
         db.session.commit()
-        return 'inserted'     
+        return 'inserted'  
         
         
 
