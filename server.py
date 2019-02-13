@@ -26,7 +26,7 @@ class Patient(db.Model):
 def hello_world():
     return 'Flask server is running'
 
-@app.route('/template')
+@app.route('/')
 def return_template():
     return render_template('home.html')
 
