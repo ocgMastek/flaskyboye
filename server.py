@@ -61,7 +61,7 @@ def register_patient():
                                  })
         db.session.add(new_patient)
         db.session.commit()
-        return 'inserted'  
+        return 'Registration Successful'
         
 # @app.route('/patient/list', methods=['GET'])
 # def list_patients():
