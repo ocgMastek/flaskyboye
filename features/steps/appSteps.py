@@ -28,12 +28,11 @@ def check_patient_fetched_by_ID_API(context):
 def post_patient_from_API(context):
     context.currentCount = len(requests.get("").json()) #insert api to get all patients
     for row in context.table:
-        new_patient = requests.post("", #insert api to add a patient
+        new_patient = requests.post("localhost:5000/patient/register", #DONE: insert api to add a patient
                                      data={"patient_id":row["patient_id"],
                                             "name":row["name"],
                                              "age":row["age"],
                                               "area":row["area"]})
-    pass
 
 
 @then("patient from API count will increase by 1")
