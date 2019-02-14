@@ -34,6 +34,7 @@
                 <input type="radio" name="gender" value="female" id="gender"> Female</td>
             </div>
 
+<<<<<<< HEAD
             <div class="form-group">
                 <label>Date Of Birth: </label>
                 <input name="dob" placeholder="Date Of Birth" id="dob">
@@ -46,5 +47,53 @@
             <input class="btn btn-primary" type="submit" value="Cancel" />
         </form>
     </div>
+=======
+	<form id="pat-reg-form" method="POST" action="./patient/register">
+	<table>
+		<tr>
+			<td>Enter Name: <input name="name" placeholder="Name" id="name"></td>
+			<td>Enter Age: <input type="number" name="age" placeholder="Age" id="age"
+					 			min="1" max="150" style="width: 50px"></td>
+			<td>Enter Area: <input name="area" placeholder="Area" id="area"></td>
+			<td>Enter Gender:</td>
+			<td><input type="radio" name="gender" value="Male" id="gender"> Male</td>
+			<td>Enter Date Of Birth: <input name="dob" placeholder="Date Of Birth" id="dob"></td>
+			<td><input name="mode" type="hidden" value="web"></td>
+			<td><input type="submit" value="Register"></td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td><input type="radio" name="gender" value="Female" id="gender"> Female</td>
+			<td> </td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	</form>
+	
+		{% if report %}
+	<h3>{{report.message}}</h3>
+	<table border="1">
+		<tr>
+			<th>Report ID</th>
+			<th>Description</th>
+			<th>Date</th>
+		</tr>
+		{% for rep in report %}
+			<tr>
+				<td>{{rep.reportid}}</td>
+				<td>{{rep.description}}</td>
+				<td>{{rep.date}}</td>
+			</tr>
+		{%endfor%}
+	</table>
+	{%endif%}
+	<br>
+	<a href="./"><h3>Go Back To Home</h3></a>
+>>>>>>> 093b643cf872b19ddc75b638cc3381c187faa68f
 </body>
 </html>
