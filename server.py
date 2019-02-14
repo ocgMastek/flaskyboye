@@ -54,14 +54,14 @@ def lab_manager():
 @app.route('/patient/register', methods=['POST'])
 def register_patient():
     if request.method == 'POST':
-        # fullrequest = request.form
+        #fullrequest = request.form
         new_patient = Patient({"name":request.form.get("name"),
                                 "age":int(request.form.get("age")),
                                 "area":request.form.get("area")
                                  })
         db.session.add(new_patient)
         db.session.commit()
-        return 'Registration Successful'
+        return 'registration successful'
         
 # @app.route('/patient/list', methods=['GET'])
 # def list_patients():
