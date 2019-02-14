@@ -27,23 +27,13 @@ class Patient(db.Model):
     def __str__(self):
         #return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
         return "Name: "+self.name+" Age: "+str(self.age)+" Area: "+ self.area + " Gender: " + self.gender + " dob: " + self.dob
-class PatientManager(object):
-    
-    
-    @staticmethod
-    def get_patient_by_id(id):
-        report = Patient.query.get(id)
-        return report
-    
-    @staticmethod
-    def delete_patient(id):
-        patient = PatientManager.get_patient_by_id(id)
-        db.session.delete(patient)
-        db.session.commit()
-        return patient
 
-def hello_world():
-    return 'Flask server is running'
+
+# class PatientManager(object):
+#     @staticmethod
+#     def get_patient_by_id(id):
+#         report = Patient.query.get(id)
+#         return report
 
 @app.route('/')
 def return_template():
@@ -59,14 +49,6 @@ def register_form():
 def lab_manager():
     if request.method == 'GET':
         return render_template('lab-manager.html',patients=Patient.query.all())
-
-# @app.route('/patient/list', methods=['GET'])
-# def list_patients():
-#     patients = Patient.query.all()
-#     for p in patients:
-#         print("Id: ",p.patient_id,"Name:",p.name,"Age:",p.age,"Area:",p.area)
-#         
-#     return str(patients)
         
 
 @app.route('/patient/register', methods=['POST'])
@@ -86,16 +68,11 @@ def register_patient():
     
 @app.route('/lab-manager/delete', methods=['POST'])
 def delete_patient():
-    patient_id = request.form.get("pat-id")
-    PatientManager.delete_patient(patient_id)
+    patient_id = request.form.get("patient_id")
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+    print(patient.patient_id)
+    db.session.delete(patient)
+    db.session.commit()
     return redirect("/lab-manager")
     
         
-# @app.route('/patient/list', methods=['GET'])
-# def list_patients():
-   
-                
-    # if request.method == 'GET':
-    #     return render_template('patients.html')        
-    # elif request.method == 'POST':
-    #     return 'sent post'
