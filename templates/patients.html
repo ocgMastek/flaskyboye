@@ -1,56 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Patient Registration</title>
-</head>
-<body>
-	<h1>Patient Registration</h1>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
 
-	<form id="pat-reg-form" method="POST" action="./patient/register">
-	<table>
-		<tr>
-			<td>Enter Name: <input name="name" placeholder="Name" id="name"></td>
-			<td>Enter Age: <input type="number" name="age" placeholder="Age" id="age"
-					 			min="1" max="150" style="width: 50px"></td>
-			<td>Enter Area: <input name="area" placeholder="Area" id="area"></td>
-			<td>Enter Gender:</td>
-			<td><input type="radio" name="gender" value="male" id="gender"> Male</td>
-			<td>Enter Date Of Birth: <input name="dob" placeholder="Date Of Birth" id="dob"></td>
-			<td><input name="mode" type="hidden" value="web"></td>
-			<td><input type="submit" value="Register"></td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td> </td>
-			<td><input type="radio" name="gender" value="female" id="gender"> Female</td>
-			<td> </td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-	</form>
-	
-		{% if report %}
-	<h3>{{report.message}}</h3>
-	<table border="1">
-		<tr>
-			<th>Report ID</th>
-			<th>Description</th>
-			<th>Date</th>
-		</tr>
-		{% for rep in report %}
-			<tr>
-				<td>{{rep.reportid}}</td>
-				<td>{{rep.description}}</td>
-				<td>{{rep.date}}</td>
-			</tr>
-		{%endfor%}
-	</table>
-	{%endif%}
-	
+    <title>Patient Registration</title>
+</head>
+
+<body>
+    <h1>Patient Registration</h1>
+    <div class="container">
+        <form id="pat-reg-form" method="POST" action="./patient/register">
+
+            <div class="form-group">
+                <label>Name: </label>
+                <input name="name" placeholder="Name" id="name">
+            </div>
+
+            <div class="form-group">
+                <label>Age : </label>
+                <input type="number" name="age" placeholder="Age" id="age" min="1" max="150" style="width: 50px">
+            </div>
+
+            <div class="form-group">
+                <label>Area : </label>
+                <input name="area" placeholder="Area" id="area">
+            </div>
+
+            <div class="form-group">
+                <label> Gender : </label>
+                <input type="radio" name="gender" value="male" id="gender"> Male</td>
+                <input type="radio" name="gender" value="female" id="gender"> Female</td>
+            </div>
+
+            <div class="form-group">
+                <label>Date Of Birth: </label>
+                <input name="dob" placeholder="Date Of Birth" id="dob">
+            </div>
+            <input type="submit" value="Register" type="button" class="btn btn-primary">
+            <input name="mode" type="hidden" value="web">
+        </form>
+        <br>
+        <form action="./">
+            <input class="btn btn-primary" type="submit" value="Cancel" />
+        </form>
+    </div>
 </body>
 </html>
