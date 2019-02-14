@@ -8,17 +8,29 @@
 	<h1>Patient Registration</h1>
 
 	<form id="pat-reg-form" method="POST" action="./patient/register">
-	<table width="100%">
+	<table>
 		<tr>
 			<td>Enter Name: <input name="name" placeholder="Name" id="name"></td>
-			<td>Enter Age: <input name="age" placeholder="Age" id="age"></td>
+			<td>Enter Age: <input type="number" name="age" placeholder="Age" id="age"
+					 			min="1" max="150" style="width: 50px"></td>
 			<td>Enter Area: <input name="area" placeholder="Area" id="area"></td>
-			<td>Enter Gender:
-				<input type="radio" name="gender" value="male" id="gender"> Male
-	  			<input type="radio" name="gender" value="female" id="gender"> Female</td>
+			<td>Enter Gender:</td>
+			<td><input type="radio" name="gender" value="male" id="gender"> Male</td>
 			<td>Enter Date Of Birth: <input name="dob" placeholder="Date Of Birth" id="dob"></td>
 			<td><input name="mode" type="hidden" value="web"></td>
 			<td><input type="submit" value="Register"></td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td><input type="radio" name="gender" value="female" id="gender"> Female</td>
+			<td> </td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
 	</table>
 	</form>
 	
