@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 import jsonpickle
 
@@ -68,7 +68,7 @@ def register_patient():
         print(new_patient)
         db.session.add(new_patient)
         db.session.commit()
-        return 'registration successful'
+        return redirect("/patient")
         
 # @app.route('/patient/list', methods=['GET'])
 # def list_patients():
