@@ -26,20 +26,36 @@ class ReportManager(object):
     
     @staticmethod
     def get_all_reports():
-        pass
+        reports = Report.query.all()
+        print("get_all_reports() Result:")
+        print(reports)
+        return reports
     
     @staticmethod
-    def get_report_by_id():
-        pass
+    def get_report_by_id(id):
+        report = Report.query.get(id)
+        print("get_report_by_id(id) result")
+        print(report)
+        return report
     
     @staticmethod
-    def add_report():
-        pass
+    def add_report(new_report):
+        db.session.add(new_report)
+        db.session.commit()
+        return new_report
     
     @staticmethod
-    def update_report():
+    def update_report(id, edit):
         pass
     
     @staticmethod
     def delete_report():
         pass
+    
+if __name__ == '__main__':
+    db.create_all()
+    ReportManager.get_report_by_id(1)
+    #ReportManager.add_report(Report({"report_id":2, "date":"10/10/1996", "description":"Some Description"}))
+    ReportManager.get_report_by_id(1)
+    ReportManager.get_all_reports()
+    app.run()
