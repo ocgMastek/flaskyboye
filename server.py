@@ -56,7 +56,7 @@ def register_form():
 @app.route('/lab-manager', methods=['GET'])
 def lab_manager():
     if request.method == 'GET':
-        return render_template('lab-manager.html',patients=Patient.query.all())
+        return render_template('lab-manager.html',patients=Patient.query.all(),reports=patient_report.query.all())
         
 @app.route('/patient/report', methods=['GET'])
 def make_report():
