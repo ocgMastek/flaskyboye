@@ -29,7 +29,7 @@
 				<td>{{pat.dob}}</td>
 				<form method="POST" action="./lab-manager/delete">
 					<input type="hidden" value="{{pat.patient_id}}" name="patient_id" id="patient_id">
-  				<td><input type="submit" value="Delete"></td>
+  				<td><input type="submit" value="Delete" id="delete-patient-{{pat.patient_id}}"></td>
 				</form>
 			</tr>
 		{%endfor%}
