@@ -8,6 +8,7 @@
 	<h1>Lab Manager</h1>
 	{% if patients %}
 	<h3>{{patients.message}}</h3>
+	<form method="POST" action="./lab-manager/delete">
 	<table border="1">
 		<tr>
 			<th>Patient ID</th>
@@ -16,6 +17,7 @@
 			<th>Area</th>
 			<th>Gender</th>
 			<th>Date Of Birth</th>
+			<th>Delete Patient</th>
 		</tr>
 		{% for pat in patients %}
 			<tr>
@@ -25,12 +27,16 @@
 				<td>{{pat.area}}</td>
 				<td>{{pat.gender}}</td>
 				<td>{{pat.dob}}</td>
+				<input type="hidden" value="{{pat.patient_id}}" name="pat-id" id="pat-id">
+  				<td><input type="submit" value="Delete"></td>
+</form>
 			</tr>
 		{%endfor%}
 		<tr>
 			<td id="count" colspan="6" style="text-align: center">{{patients|count}} Patient Details Found</td>
 		</tr>
 	</table>
+	</form>
 	{%endif%}
 	<br>
 	<a href="./"><h3>Go Back To Home</h3></a>

@@ -27,6 +27,20 @@ class Patient(db.Model):
     def __str__(self):
         #return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
         return "Name: "+self.name+" Age: "+str(self.age)+" Area: "+ self.area + " Gender: " + self.gender + " dob: " + self.dob
+class PatientManager(object):
+    
+    
+    @staticmethod
+    def get_patient_by_id(id):
+        report = Patient.query.get(id)
+        return report
+    
+    @staticmethod
+    def delete_patient(id):
+        patient = PatientManager.get_patient_by_id(id)
+        db.session.delete(patient)
+        db.session.commit()
+        return patient
 
 def hello_world():
     return 'Flask server is running'
@@ -69,6 +83,13 @@ def register_patient():
         db.session.add(new_patient)
         db.session.commit()
         return redirect("/patient")
+    
+@app.route('/lab-manager/delete', methods=['POST'])
+def delete_patient():
+    patient_id = request.form.get("pat-id")
+    PatientManager.delete_patient(patient_id)
+    return redirect("/lab-manager")
+    
         
 # @app.route('/patient/list', methods=['GET'])
 # def list_patients():
