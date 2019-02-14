@@ -37,17 +37,21 @@ def post_patient_from_API(context):
     context.driver = webdriver.Chrome()
     context.driver.get("http://localhost:5000/lab-manager")
     context.count_text = context.driver.find_element_by_id("count").text
+    context.driver.get("http://localhost:5000/patient")
     for row in context.table:
-        context.driver.find_element_by_id("empno").send_keys(row["empno"])
         context.driver.find_element_by_id("name").send_keys(row["name"])
-        context.driver.find_element_by_id("salary").send_keys(row["salary"])
-        context.driver.find_element_by_id("empno").send_keys(row["empno"])
-        context.driver.find_element_by_id("add-emp").click()
+        context.driver.find_element_by_id("age").send_keys(row["age"])
+        context.driver.find_element_by_id("area").send_keys(row["area"])
+        context.driver.find_element_by_id("gender").send_keys(row["gender"])
+        context.driver.find_element_by_id("dob").send_keys(row["dob"])
+        context.driver.find_element_by_id("add-patient").click()
+    context.driver.get("http://localhost:5000/lab-manager")
+    context.count_text_after_add = context.driver.find_element_by_id("count").text
 
 
-@then("patient from API count will increase by 1")
+@then("patient from API count will increase")
 def check_count_increase(context):
-    ok_((context.currentCount + 1) == len(requests.get("http://localhost:5000/lab-manager").json())) #DONE insert api to get all patients
+    ok_(not (context.count_text == context.count_text_after_add), "Count not Changed")
 """    
 @given("update request with new patient area with API")
 def update_patient_from_API(context):
@@ -61,6 +65,7 @@ def update_patient_from_API(context):
 def check_patient_updated(context):
     ok_((context.pre_update_patient != context.updated_patient), "Patient not Updated")
 """
+"""
 @given("delete request with patient id with API")
 def delete_patient_with_API(context):
     context.countBeforeDelete = len(requests.get("http://localhost:5000/lab-manager").json()) #DONE insert api to get all patients
@@ -71,7 +76,7 @@ def delete_patient_with_API(context):
 @then("patient from API count will decrease by 1")
 def check_count_decrease(context):
     ok_((context.countBeforeDelete - 1) == len(requests.get("http://localhost:5000/lab-manager").json())) #DONE insert api to get all patients
-
+"""
 
 
 

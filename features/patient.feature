@@ -12,9 +12,9 @@ Scenario: Get Patient by Id from API
 
 Scenario: Add a Patient through API
 	Given post request with patient details with API
-	|patient_id	|name		|age	|area	|
-	|1			|Patient A	|40		|Leeds	|
-	Then patient from API count will increase by 1
+	|name		|age	|area	|gender	|dob		|
+	|Patient A	|40		|Leeds	|f		|10/10/1996	|
+	Then patient from API count will increase
 
 Scenario: Update Patient through API
 	Given update request with new patient area with API
