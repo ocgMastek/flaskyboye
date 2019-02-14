@@ -1,0 +1,9 @@
+h1 {
+    width: 30%;
+    margin: 0 auto; 
+}
+.container {
+    width: 30%;
+    margin: 5% auto;
+    /* border: 1px solid black; */
+}
