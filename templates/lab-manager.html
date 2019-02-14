@@ -17,14 +17,14 @@
 		</tr>
 		{% for pat in patients %}
 			<tr>
-				<td>{{pat.patid}}</td>
+				<td>{{pat.patient_id}}</td>
 				<td>{{pat.name}}</td>
 				<td>{{pat.age}}</td>
 				<td>{{pat.area}}</td>
 			</tr>
 		{%endfor%}
 		<tr>
-			<td id="count" colspan="3">{{result|count}} : Patients Fetched</td>
+			<td id="count" colspan="3">{{patients|count}} : Patients Found</td>
 		</tr>
 	</table>
 	{%endif%}

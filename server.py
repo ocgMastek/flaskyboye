@@ -14,14 +14,14 @@ class Patient(db.Model):
     area=db.Column('area',db.String(45))
     
     def __init__(self,params):
-        # self.patient_id=int(params["patient_id"])
+        #self.patient_id=int(params["patient_id"])
         self.name=params["name"]
         self.age=int(params["age"])
         self.area=params["area"]
         pass    
     
     def __str__(self):
-        # return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
+        #return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
         return "Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
 
 def hello_world():
@@ -36,13 +36,19 @@ def return_template():
 def register_form():
     if request.method == 'GET':
         return render_template('patients.html')
-
-@app.route('/patient/list', methods=['GET'])
-def list_patients():
+    
+@app.route('/lab-manager', methods=['GET'])
+def lab_manager():
     if request.method == 'GET':
-        if request.method == 'GET':
-                result = Patient.query.all()
-        return jsonpickle.encode(result)
+        return render_template('lab-manager.html',patients=Patient.query.all())
+
+# @app.route('/patient/list', methods=['GET'])
+# def list_patients():
+#     patients = Patient.query.all()
+#     for p in patients:
+#         print("Id: ",p.patient_id,"Name:",p.name,"Age:",p.age,"Area:",p.area)
+#         
+#     return str(patients)
         
 
 @app.route('/patient/register', methods=['POST'])
