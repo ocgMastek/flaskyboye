@@ -1,7 +1,7 @@
 Feature: Patient Management in API Using Flask
 
 Scenario: Get list of all Patients from API
-	Given request for all patients with API
+	Given request for all patients
 	Then have all patients from API available from the application
 
 Scenario: Get Patient by Id from API

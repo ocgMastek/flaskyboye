@@ -45,21 +45,8 @@ class ReportManager(object):
         return new_report
     
     @staticmethod
-    def update_report(id, edit):
-        pass
-    
-    @staticmethod
     def delete_report(id):
         report = ReportManager.get_report_by_id(id)
         db.session.delete(report)
         db.session.commit()
         return "Report "+str(id)+" successfully deleted"
-    
-if __name__ == '__main__':
-    db.create_all()
-    ReportManager.get_report_by_id(1)
-    #ReportManager.add_report(Report({"report_id":2, "date":"10/10/1996", "description":"Some Description"}))
-    ReportManager.get_all_reports()
-    ReportManager.delete_report(2)
-    ReportManager.get_all_reports()
-    app.run()
