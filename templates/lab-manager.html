@@ -14,6 +14,8 @@
 			<th>Name</th>
 			<th>Age</th>
 			<th>Area</th>
+			<th>Gender</th>
+			<th>Date Of Birth</th>
 		</tr>
 		{% for pat in patients %}
 			<tr>
@@ -21,6 +23,8 @@
 				<td>{{pat.name}}</td>
 				<td>{{pat.age}}</td>
 				<td>{{pat.area}}</td>
+				<td>{{pat.gender}}</td>
+				<td>{{pat.dob}}</td>
 			</tr>
 		{%endfor%}
 		<tr>
