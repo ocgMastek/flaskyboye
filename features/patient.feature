@@ -1,7 +1,7 @@
 Feature: Patient Management in API Using Flask
 
 Scenario: Get list of all Patients from API
-	Given request for all patients with API
+	Given request for all patients
 	Then have all patients from API available from the application
 
 Scenario: Get Patient by Id from API
@@ -12,9 +12,9 @@ Scenario: Get Patient by Id from API
 
 Scenario: Add a Patient through API
 	Given post request with patient details with API
-	|patient_id	|name		|age	|area	|
-	|1			|Patient A	|40		|Leeds	|
-	Then patient from API count will increase by 1
+	|name		|age	|area	|gender	|dob		|
+	|Patient A	|40		|Leeds	|male	|10/10/1996	|
+	Then patient from API count will increase
 
 Scenario: Update Patient through API
 	Given update request with new patient area with API
@@ -25,5 +25,5 @@ Scenario: Update Patient through API
 Scenario: Delete Patient through API by id
 	Given delete request with patient id with API
 	|patient_id	|
-	|1			|
+	|6			|
 	Then patient from API count will decrease by 1

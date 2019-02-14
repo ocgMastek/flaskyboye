@@ -43,12 +43,6 @@ class Patient(db.Model):
         return "Name: "+self.name+" Age: "+str(self.age)+" Area: "+ self.area + " Gender: " + self.gender + " dob: " + self.dob
 
 
-# class PatientManager(object):
-#     @staticmethod
-#     def get_patient_by_id(id):
-#         report = Patient.query.get(id)
-#         return report
-
 @app.route('/')
 def return_template():
     
