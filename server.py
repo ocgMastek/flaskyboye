@@ -12,17 +12,21 @@ class Patient(db.Model):
     name=db.Column('name',db.String(45))
     age=db.Column(db.Integer)
     area=db.Column('area',db.String(45))
+    gender=db.Column('gender',db.String(10))
+    dob=db.Column('dob',db.String(10))
     
     def __init__(self,params):
         #self.patient_id=int(params["patient_id"])
         self.name=params["name"]
         self.age=int(params["age"])
         self.area=params["area"]
+        self.gender=params["gender"]
+        self.dob=params["dob"]
         pass    
     
     def __str__(self):
         #return "Id:"+str(self.patient_id)+" Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
-        return "Name:"+self.name+" Age:"+str(self.age)+" Area:"+ self.area
+        return "Name: "+self.name+" Age: "+str(self.age)+" Area: "+ self.area + " Gender: " + self.gender + " dob: " + self.dob
 
 def hello_world():
     return 'Flask server is running'
@@ -57,8 +61,11 @@ def register_patient():
         #fullrequest = request.form
         new_patient = Patient({"name":request.form.get("name"),
                                 "age":int(request.form.get("age")),
-                                "area":request.form.get("area")
+                                "area":request.form.get("area"),
+                                "gender":request.form.get("gender"),
+                                "dob":request.form.get("dob")
                                  })
+        print(new_patient)
         db.session.add(new_patient)
         db.session.commit()
         return 'registration successful'
