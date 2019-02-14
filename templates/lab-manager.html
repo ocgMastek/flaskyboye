@@ -8,33 +8,33 @@
     <meta charset="ISO-8859-1">
     <title>Lab Manager</title>
 </head>
-
+	<br>
 <body>
 	<h1>Lab Manager</h1>
 	{% if patients %}
 	<h3>{{patients.message}}</h3>
 
-    <table border="1">
+    <table border="1" align="center">
         <tr>
-            <th>Patient ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Area</th>
-            <th>Gender</th>
-            <th>Date Of Birth</th>
-            <th>Delete Patient</th>
+            <th style="text-align:center">Patient ID</th>
+            <th style="text-align:center">Name</th>
+            <th style="text-align:center">Age</th>
+            <th style="text-align:center">Area</th>
+            <th style="text-align:center">Gender</th>
+            <th style="text-align:center">Date Of Birth</th>
+            <th style="text-align:center">Delete Patient</th>
         </tr>
         {% for pat in patients %}
         <tr>
-            <td>{{pat.patient_id}}</td>
-            <td>{{pat.name}}</td>
-            <td>{{pat.age}}</td>
-            <td>{{pat.area}}</td>
-            <td>{{pat.gender}}</td>
-            <td>{{pat.dob}}</td>
+            <td style="text-align:center">{{pat.patient_id}}</td>
+            <td style="text-align:center">{{pat.name}}</td>
+            <td style="text-align:center">{{pat.age}}</td>
+            <td style="text-align:center">{{pat.area}}</td>
+            <td style="text-align:center">{{pat.gender}}</td>
+            <td style="text-align:center">{{pat.dob}}</td>
             <form method="POST" action="./lab-manager/delete">
                 <input type="hidden" value="{{pat.patient_id}}" name="patient_id" id="patient_id">
-                <td><input type="submit" value="Delete"></td>
+            <td style="text-align:center"><input type="submit" value="Delete"></td>
             </form>
         </tr>
         {%endfor%}
@@ -44,7 +44,7 @@
     </table>
 
     {%endif%}
-    <br>
+    <br><br>
     <div class="container-two">
         <a href="./">
             <button class="btn btn-primary btn-block" type="submit" value="Cancel" />Go Back</button>
