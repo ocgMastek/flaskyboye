@@ -7,18 +7,18 @@ app.config['SQLALCHEMY_DATABASE_URI']='mysql+mysqlconnector://root:root@localhos
 db  = SQLAlchemy(app)
 
 class patient_report(db.Model):
+    __tablename__="patient_reports"
     report_id=db.Column(db.Integer, primary_key=True)
-    patient_id=db.Column(db.Integer, primary_key=True)
-    report_text=db.Column('report', db.String(250))
+    report_text=db.Column(db.String(250))
+    
+    patient_id=db.Column(db.Integer, db.ForeignKey("patients.patient_id"), nullable=False)
 
     def __init__(self,params):
-        __tablename__="patient_notes"
-        self.report_id=params["notes"]
-        self.patient_id=int(params["patient_id"])
+        self.report_text=params["report_text"]
         pass
 
     def __str__(self):
-        return "patient" + str(self.patient_id)+ ", reported history: " + self.report_text
+        return "Report"
 
 class Patient(db.Model):
     __tablename__="patients"
@@ -28,6 +28,8 @@ class Patient(db.Model):
     area=db.Column('area',db.String(45))
     gender=db.Column('gender',db.String(10))
     dob=db.Column('dob',db.String(10))
+    
+    reports = db.relationship("patient_report", backref=db.backref("patient", lazy=True))
     
     def __init__(self,params):
         #self.patient_id=int(params["patient_id"])
@@ -67,9 +69,12 @@ def make_report():
 @app.route('/patient/savereport', methods=['POST'])
 def save_report():
     if request.method == "POST":
-        new_report = patient_report({"patient_id":request.form.get("patient_id"),
-                                     "notes":request.form.get("notes")})
-        print(new_report)
+        new_report = patient_report({"report_text":request.form.get("report_text")})
+        #print(new_report)
+        patient_id = request.form.get("patient_id")
+        patient = Patient.query.filter_by(patient_id=patient_id).first()
+        patient.reports.append(new_report)
+        #db.session.add(patient)
         db.session.add(new_report)
         db.session.commit()
     return redirect('/patient/report')
@@ -104,8 +109,11 @@ def delete_patient():
 def delete_report():
     report_id = request.form.get("report_id")
     report = patient_report.query.filter_by(report_id=report_id).first()
-    print(report.report_id)
+    patient_id = report["patient_id"] #Error happening here
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+    patient.reports.remove(report)
     db.session.delete(report)
+    db.session.add(patient)
     db.session.commit()
     return redirect("/lab-manager")
     
