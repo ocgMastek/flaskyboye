@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
+import jsonpickle
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+mysqlconnector://root:root@localhost:3306/python_projet'
@@ -39,7 +40,9 @@ def register_form():
 @app.route('/patient/list', methods=['GET'])
 def list_patients():
     if request.method == 'GET':
-        pass
+        if request.method == 'GET':
+                result = Patient.query.all()
+        return jsonpickle.encode(result)
         
 
 @app.route('/patient/register', methods=['POST'])
@@ -54,8 +57,10 @@ def register_patient():
         db.session.commit()
         return 'inserted'  
         
-        
-
+# @app.route('/patient/list', methods=['GET'])
+# def list_patients():
+   
+                
     # if request.method == 'GET':
     #     return render_template('patients.html')        
     # elif request.method == 'POST':
