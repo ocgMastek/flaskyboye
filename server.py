@@ -70,6 +70,8 @@ def save_report():
         new_report = patient_report({"patient_id":request.form.get("patient_id"),
                                      "notes":request.form.get("notes")})
         print(new_report)
+        db.session.add(new_report)
+        db.session.commit()
     return redirect('/patient/report')
     #return render_template('record.html')
 
@@ -97,5 +99,13 @@ def delete_patient():
     db.session.delete(patient)
     db.session.commit()
     return redirect("/lab-manager")
+
+@app.route('/lab-manager/delete-report', methods=['POST'])
+def delete_report():
+    report_id = request.form.get("report_id")
+    report = patient_report.query.filter_by(report_id=report_id).first()
+    print(report.report_id)
+    db.session.delete(report)
+    db.session.commit()
+    return redirect("/lab-manager")
     
-        
