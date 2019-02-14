@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Lab Manager</title>
-</head>
-<body>
-	<h1>Lab Manager</h1>
-	{% if patients %}
-	<h3>{{patients.message}}</h3>
-	
-	<table border="1">
-		<tr>
-			<th>Patient ID</th>
-			<th>Name</th>
-			<th>Age</th>
-			<th>Area</th>
-			<th>Gender</th>
-			<th>Date Of Birth</th>
-			<th>Delete Patient</th>
-		</tr>
-		{% for pat in patients %}
-			<tr>
-				<td>{{pat.patient_id}}</td>
-				<td>{{pat.name}}</td>
-				<td>{{pat.age}}</td>
-				<td>{{pat.area}}</td>
-				<td>{{pat.gender}}</td>
-				<td>{{pat.dob}}</td>
-				<form method="POST" action="./lab-manager/delete">
-					<input type="hidden" value="{{pat.patient_id}}" name="patient_id" id="patient_id">
-  				<td><input type="submit" value="Delete"></td>
-				</form>
-			</tr>
-		{%endfor%}
-		<tr>
-			<td id="count" colspan="7" style="text-align: center">{{patients|count}} Patient Details Found</td>
-		</tr>
-	</table>
 
-	{%endif%}
-	<br>
-	<a href="./"><h3>Go Back To Home</h3></a>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+    <meta charset="ISO-8859-1">
+    <title>Lab Manager</title>
+</head>
+
+<body>
+    <h1>Lab Manager</h1>
+    {% if patients %}
+    <h3>{{patients.message}}</h3>
+
+    <table border="1">
+        <tr>
+            <th>Patient ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Area</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Delete Patient</th>
+        </tr>
+        {% for pat in patients %}
+        <tr>
+            <td>{{pat.patient_id}}</td>
+            <td>{{pat.name}}</td>
+            <td>{{pat.age}}</td>
+            <td>{{pat.area}}</td>
+            <td>{{pat.gender}}</td>
+            <td>{{pat.dob}}</td>
+            <form method="POST" action="./lab-manager/delete">
+                <input type="hidden" value="{{pat.patient_id}}" name="patient_id" id="patient_id">
+                <td><input type="submit" value="Delete"></td>
+            </form>
+        </tr>
+        {%endfor%}
+        <tr>
+            <td id="count" colspan="7" style="text-align: center">{{patients|count}} Patient Details Found</td>
+        </tr>
+    </table>
+
+    {%endif%}
+    <br>
+    <div class="container-two">
+        <a href="./">
+            <button class="btn btn-primary btn-block" type="submit" value="Cancel" />Go Back</button>
+        </a>
+    <div>
 </body>
+
 </html>

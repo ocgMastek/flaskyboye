@@ -3,14 +3,30 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
 </head>
+
 <h1>Medical Report System</h1>
 
-<a href="./patient"><h3>Patient Registration/Profile</h3></a>
-
-<a href="./lab-manager"><h3>Lab Manager</h3></a>
-<!-- <button type="button" class="btn btn-primary btn-block">Button 1</button>  -->
-<br>
-
-{% if result %}
-<td id="count" colspan="3">{{result|count}} Patients Currently Registered</td>
-{%endif%}
+<div class="container">
+    
+    <div class="row">
+        <div class="col">
+                   <a href="./patient">
+                <h3>Register Patient</h3>
+            </a>
+        </div>
+        <div class="col">
+            <a href="./lab-manager">
+                <h3>Patient Manager</h3>
+            </a>
+            <!-- <button type="button" class="btn btn-primary btn-block">Button 1</button>  -->
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if result %}
+            <td id="count" colspan="3">{{result|count}} Patients Currently Registered</td>
+            {%endif%}
+        </div>
+    </div>
+    </body>
