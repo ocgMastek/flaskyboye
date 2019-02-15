@@ -13,5 +13,5 @@ Scenario: Add a Patient through Browser
 Scenario: Delete Patient through Browser by id
 	Given delete request with patient id with Browser
 	|patient_id	|
-	|15			|
+	|18			|
 	Then patient from Browser count will decrease by 1

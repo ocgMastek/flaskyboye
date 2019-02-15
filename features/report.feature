@@ -13,5 +13,5 @@ Scenario: Add a Report through Browser
 Scenario: Delete Report through Browser by id
 	Given delete request with Report id with Browser
 	|report_id	|
-	|6			|
+	|8			|
 	Then Report from Browser count will decrease by 1
