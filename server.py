@@ -109,11 +109,10 @@ def delete_patient():
 def delete_report():
     report_id = request.form.get("report_id")
     report = patient_report.query.filter_by(report_id=report_id).first()
-    patient_id = report["patient_id"] #Error happening here
-    patient = Patient.query.filter_by(patient_id=patient_id).first()
-    patient.reports.remove(report)
+    print(report.report_id)
+
     db.session.delete(report)
-    db.session.add(patient)
+    
     db.session.commit()
     return redirect("/lab-manager")
     
