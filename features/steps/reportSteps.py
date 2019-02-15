@@ -44,7 +44,7 @@ def delete_Report_with_Browser(context):
 
 @then("Report from Browser count will decrease by 1")
 def check_count_decrease(context):
-   ok_(not (context.count_text == context.count_text_after_delete), "Count not Changed")
+   ok_(not (context.count_text == context.count_text_after_delete), "Count not Changed") 
 
 
 
