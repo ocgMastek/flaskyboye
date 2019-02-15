@@ -44,7 +44,7 @@
     </table>
 
     {%endif%}
-    <br>
+  
     
 	     {% if reports %}
 	<h3>{{reports.message}}</h3>
@@ -53,6 +53,7 @@
         <tr>
             <th style="text-align:center">Patient ID</th>
             <th style="text-align:center">Notes</th>
+            <th style="text-align:center">Delete Note</th>
         </tr>
         {% for rep in reports %}
         <tr>
@@ -65,18 +66,18 @@
         </tr>
         {%endfor%}
         <tr>
-            <td id="count" colspan="2" style="text-align: center">{{reports|count}} Patient Reports Found</td>
+            <td id="count" colspan="3" style="text-align: center">{{reports|count}} Patient Reports Found</td>
         </tr>
     </table>
 
     {%endif%}
     
-    <br>
     <div class="container-two">
         <a href="./">
             <button class="btn btn-primary btn-block" type="submit" value="Cancel" />Go Back</button>
         </a>
     <div>
+    <br>
 </body>
 
 </html>

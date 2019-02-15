@@ -117,3 +117,4 @@ def delete_report():
     db.session.commit()
     return redirect("/lab-manager")
     
+    
