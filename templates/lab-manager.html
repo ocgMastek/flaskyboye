@@ -34,7 +34,7 @@
             <td style="text-align:center">{{pat.dob}}</td>
             <form method="POST" action="./lab-manager/delete">
                 <input type="hidden" value="{{pat.patient_id}}" name="patient_id" id="patient_id">
-            <td style="text-align:center"><input type="submit" value="Delete"></td>
+            <td style="text-align:center"><input type="submit" value="Delete" id="delete-patient-{{pat.patient_id}}"></td>
             </form>
         </tr>
         {%endfor%}
@@ -61,7 +61,7 @@
             <td style="text-align:center">{{rep.report_text}}</td>
             <form method="POST" action="./lab-manager/delete-report">
                 <input type="hidden" value="{{rep.report_id}}" name="report_id" id="report_id">
-            <td style="text-align:center"><input type="submit" value="Delete"></td>
+            <td style="text-align:center"><input type="submit" value="Delete" id="delete-report-{{rep.report_id}}"></td>
             </form>
         </tr>
         {%endfor%}

@@ -42,10 +42,12 @@ def delete_patient_with_Browser(context):
     context.count_text = context.driver.find_element_by_id("count").text
     for row in context.table:
         context.driver.find_element_by_id("delete-patient-"+row['patient_id']).click()
+    context.driver.get("http://localhost:5000/lab-manager")
+    context.count_after_delete = context.driver.find_element_by_id("count").text
 
 @then("patient from Browser count will decrease by 1")
 def check_count_decrease(context):
-   ok_(not (context.count_text == context.driver.find_element_by_id("count").text), "Count not Changed")
+   ok_(not (context.count_text == context.count_after_delete), "Count not Changed")
 
 
 
